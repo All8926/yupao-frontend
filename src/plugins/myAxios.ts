@@ -1,8 +1,9 @@
 import axios from "axios";
 
 
+const isDev = process.env.NODE_ENV == 'development'
 const myAxios = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: isDev ? "http://localhost:8080" : '线上地址',
 });
 
 myAxios.defaults.withCredentials = true
@@ -21,7 +22,10 @@ myAxios.interceptors.request.use(
 myAxios.interceptors.response.use(
   (response) => {
     console.log("Response was received");
-
+    if(response.data?.code === 40100){
+        const redirectUrl  = window.location.pathname
+        window.location.href = window.location.origin + '/user/login?redirect=' + redirectUrl
+    }
     return response.data;
   },
   (error) => {

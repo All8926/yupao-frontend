@@ -1,4 +1,4 @@
-import { createWebHashHistory, createRouter } from 'vue-router'
+import { createWebHashHistory,createWebHistory, createRouter } from 'vue-router'
  
 const Index= () => import('../pages/Index.vue')
 const Team = () => import('../pages/Team.vue')
@@ -15,24 +15,24 @@ const TeamUpdate = () => import('../pages/TeamUpdate.vue')
 
 
 const routes = [
-  { path: '/', component: Index },
-  { path: '/team', component: Team },
-  { path: '/user', component: User },
-  { path: '/user/update', component: UserUpdate },
-  { path: '/user/edit', component: UserEdit },
-  { path: '/user/team/create', component: UserTeamCreate },
-  { path: '/user/team/join', component: UserTeamJoin },
-  { path: '/search', component: SearchPage },
-  { path: '/user/list', component: SearchResultPage },
-  { path: '/user/login', component: UserLogin },
-  { path: '/team/add', component: TeamAdd },
-  { path: '/team/update', component: TeamUpdate },
+  { path: '/',meta:{title:"主页"}, component: Index },
+  { path: '/team', meta:{title:"找队伍"},component: Team },
+  { path: '/user', meta:{title:"个人信息"}, component: User },
+  { path: '/user/update', meta:{title:"更新信息"}, component: UserUpdate },
+  { path: '/user/edit', meta:{title:"编辑信息"}, component: UserEdit },
+  { path: '/user/team/create', meta:{title:"我创建的队伍"}, component: UserTeamCreate },
+  { path: '/user/team/join', meta:{title:"我加入的队伍"}, component: UserTeamJoin },
+  { path: '/search', meta:{title:"搜索"}, component: SearchPage },
+  { path: '/user/list', meta:{title:"用户列表"}, component: SearchResultPage },
+  { path: '/user/login', meta:{title:"用户登录"}, component: UserLogin },
+  { path: '/team/add', meta:{title:"创建队伍"}, component: TeamAdd },
+  { path: '/team/update', meta:{title:"更新队伍"}, component: TeamUpdate },
 
 ]
 console.log(routes);
 
  const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 })
 

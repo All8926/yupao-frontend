@@ -27,9 +27,10 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import myAxios from "../plugins/myAxios.ts";
 const router = useRouter();
+const route = useRoute()
 
 const userAccount = ref('');
 const userPassword = ref('');
@@ -39,7 +40,8 @@ const onSubmit = async (values) => {
     console.log(res)
     if(res.code == 0 && res.data){
         showSuccessToast('登录成功');
-        router.replace("/")
+        const redirectUrl = route.query?.redirect as string ?? '/'
+        router.replace(redirectUrl)
     }else{
         showFailToast('登录失败');
     }

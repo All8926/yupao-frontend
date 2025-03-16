@@ -12,6 +12,7 @@
   <van-cell title="更新个人信息" is-link to="/user/update" />
   <van-cell title="我创建的队伍" is-link to="/user/team/create" />
   <van-cell title="我加入的队伍" is-link to="/user/team/join" />
+  <van-cell title="重新登录" is-link to="/user/login" />
 </template>
 
 <script setup lang="ts">
